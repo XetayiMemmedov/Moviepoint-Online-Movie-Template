@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moviepoint - Online Movie,Vedio and TV Show HTML Template</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="assets/img/favcion.png" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/bootstrap.min.css"
+      media="all"
+    />
+    <!-- Slick nav CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/slicknav.min.css"
+      media="all"
+    />
+    <!-- Iconfont CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/icofont.css"
+      media="all"
+    />
+    <!-- Owl carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css" />
+    <!-- Popup CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/magnific-popup.css"
+    />
+    <!-- Main style CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/style.css"
+      media="all"
+    />
+    <!-- Responsive CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/responsive.css"
+      media="all"
+    />
+    <!-- Add Font Awesome to your HTML head -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      #pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      #pagination button {
+        padding: 10px 20px;
+        background-color: #e50914; /* Netflix-style red */
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      #pagination button:hover:not(:disabled) {
+        background-color: #ff1a1a;
+        transform: translateY(-2px);
+      }
+
+      #pagination button:disabled {
+        background-color: #555;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      #pageInfo {
+        font-weight: bold;
+        font-size: 16px;
+        color: #fff;
+      }
+      #load-more-btn {
+        padding: 10px 25px;
+        background-color: #e50914;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      #load-more-btn:hover {
+        background-color: #ff1a1a;
+        transform: translateY(-2px);
+      }
+      .portfolio-item {
+        display: flex;
+        flex-wrap: wrap;
+        min-height: auto !important; /* ensure no fixed height */
+      }
+      /* Style for the page numbers container */
+      #pageNumbers span {
+        padding: 0 10px;
+        font-size: 18px;
+        color: #333;
+        display: inline-block;
+      }
+
+      /* Style the ellipsis (three dots) */
+      .page-ellipsis {
+        font-size: 24px;
+        color: #007bff; /* Blue color for ellipses */
+        font-weight: bold;
+        padding: 0 15px; /* Space around the ellipses */
+        cursor: default; /* Makes it unclickable */
+        background-color: #f0f0f0; /* Light background to make it stand out */
+        border-radius: 4px; /* Slight round edges */
+        margin: 0 5px; /* Space around the ellipses */
+      }
+
+      /* Add hover effect on ellipses (optional) */
+      .page-ellipsis:hover {
+        background-color: #d6d6d6; /* Slightly darker background on hover */
+        color: #0056b3; /* Darker blue color on hover */
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Page loader -->
+    <div id="preloader"></div>
+    <!-- header section start -->
+    <header class="header">
+      <div class="container">
+        <div class="header-area">
+          <div class="logo">
+            <a href="index-2.html"
+              ><img src="assets/img/logo.png" alt="logo"
+            /></a>
+          </div>
+          <div class="header-right">
+            <form action="#" style="margin-right: 40px">
+              <select id="genres">
+                <option value="All">Genres</option>
+              </select>
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search movies..."
+              />
+              <button
+                id="search-btn"
+                style="padding-left: 20px; padding-right: 20px"
+              >
+                <i class="icofont icofont-search"></i>
+              </button>
+            </form>
+            <ul>
+              <li><a href="#">Welcome Guest!</a></li>
+              <li><a class="login-popup" href="#">Login</a></li>
+            </ul>
+          </div>
+          <div class="menu-area">
+            <div class="responsive-menu"></div>
+            <div class="mainmenu">
+              <ul id="primary-menu">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="top-movies.html" id="movies">Movies</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="login-area">
+      <div class="login-box">
+        <a href="#"><i class="icofont icofont-close"></i></a>
+        <h2>LOGIN</h2>
+        <form action="#">
+          <h6>USERNAME OR EMAIL ADDRESS</h6>
+          <input type="text" />
+          <h6>PASSWORD</h6>
+          <input type="text" />
+          <div class="login-remember">
+            <input type="checkbox" />
+            <span>Remember Me</span>
+          </div>
+          <div class="login-signup">
+            <span>SIGNUP</span>
+          </div>
+          <a href="#" class="theme-btn">LOG IN</a>
+          <span>Or Via Social</span>
+          <div class="login-social">
+            <a href="#"><i class="icofont icofont-social-facebook"></i></a>
+            <a href="#"><i class="icofont icofont-social-twitter"></i></a>
+            <a href="#"><i class="icofont icofont-social-linkedin"></i></a>
+            <a href="#"><i class="icofont icofont-social-google-plus"></i></a>
+            <a href="#"><i class="icofont icofont-camera"></i></a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- header section end -->
+    <!-- hero area start -->
+    <section class="hero-area" id="home">
+      <div class="container">
+        <div class="hero-area-slider" id="row"></div>
+      </div>
+    </section>
+    <!-- hero area end -->
+    <!-- portfolio section start -->
+    <section class="portfolio-area pt-60">
+      <div class="container">
+        <div class="row flexbox-center">
+          <div class="col-lg-6 text-center text-lg-left">
+            <div class="section-title">
+              <h1>
+                <i class="icofont icofont-movie"></i> Spotlight This Month
+              </h1>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center text-lg-right">
+            <div class="portfolio-menu">
+              <ul>
+                <li data-filter="*" class="active" id="latest">Latest</li>
+                <li data-filter=".top" id="top">Top Rated</li>
+                <li data-filter=".released" id="recent">Recently Released</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="row portfolio-item" id="portfolio"></div>
+
+            <div id="pagination" style="text-align: center; margin-top: 950px">
+              <button id="firstBtn"><<</button>
+              <div id="pageNumbers" style="display: inline-block"></div>
+              <button id="lastBtn">>></button>
+              <br />
+              <br />
+              <button id="prevBtn">
+                <i class="fas fa-chevron-left"></i> Prev
+              </button>
+              <span id="pageInfo" style="margin: 0 15px">Page 1 of 10</span>
+              <button id="nextBtn">
+                Next <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-3 text-center text-lg-left">
+            <div class="portfolio-sidebar">
+              <img src="assets/img/sidebar/sidebar1.png" alt="sidebar" />
+              <img src="assets/img/sidebar/sidebar2.png" alt="sidebar" />
+              <img src="assets/img/sidebar/sidebar3.png" alt="sidebar" />
+              <img src="assets/img/sidebar/sidebar4.png" alt="sidebar" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- portfolio section end -->
+
+    <!-- footer section start -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget">
+              <img src="assets/img/logo.png" alt="about" />
+              <p>7th Harley Place, London W1G 8LZ United Kingdom</p>
+              <h6><span>Call us: </span>(+880) 111 222 3456</h6>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Security</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget">
+              <h4>Account</h4>
+              <ul>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Watchlist</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">User Guide</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget">
+              <h4>Newsletter</h4>
+              <p>
+                Subscribe to our newsletter system now to get latest news from
+                us.
+              </p>
+              <form action="#">
+                <input type="text" placeholder="Enter your email.." />
+                <button>SUBSCRIBE NOW</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 text-center text-lg-left">
+              <div class="copyright-content">
+                <p>
+                  <a target="_blank" href="https://www.templateshub.net"
+                    >Templates Hub</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+              <div class="copyright-content">
+                <a href="#" class="scrollToTop">
+                  Back to top<i class="icofont icofont-arrow-up"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer section end -->
+    <!-- jquery main JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Slick nav JS -->
+    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <!-- owl carousel JS -->
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- Popup JS -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Isotope JS -->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <!-- main JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="script.js"></script>
+    <style>
+      #scroll-loading {
+        position: relative;
+        margin-bottom: 20px;
+        left: auto;
+        transform: none;
+        display: none; /* Initially hidden */
+        z-index: auto;
+      }
+
+      footer {
+        position: relative;
+        margin-top: 20px;
+        width: 100%;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        z-index: auto;
+      }
+
+      body {
+        padding-bottom: 0;
+      }
+    </style>
+  </body>
+</html>
