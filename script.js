@@ -105,7 +105,6 @@ function renderPageNumbers(page) {
 
   
 
-// Event listener for prevBtn to go to the previous page
 prevBtn.addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
@@ -113,7 +112,6 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-// Event listener for nextBtn to go to the next page
 nextBtn.addEventListener("click", () => {
   const totalPages = Math.ceil(movies.length / itemsPerPage);
   if (currentPage < totalPages) {
@@ -122,13 +120,11 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-// Event listener for firstBtn to go to the first page
 firstBtn.addEventListener("click", () => {
   currentPage = 1;
   renderPaginatedMovies(currentPage);
 });
 
-// Event listener for lastBtn to go to the last page
 lastBtn.addEventListener("click", () => {
   const totalPages = Math.ceil(movies.length / itemsPerPage);
   currentPage = totalPages;
